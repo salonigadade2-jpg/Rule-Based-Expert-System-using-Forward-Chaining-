@@ -66,6 +66,7 @@ Text-based interface
 
 **EXAMPLE :-**
 === Rule-Based Expert System ===
+
 Enter your symptoms (comma separated): fever, cough
 
 Processing your symptoms...
@@ -74,37 +75,5 @@ Processing your symptoms...
 👉 Diagnosis: Flu
 
 
-# -------------------------------------------
-# Rule-Based Expert System (Forward Chaining)
-# -------------------------------------------
 
-rules = [
-    {"if": ["fever", "cough"], "then": "Flu"},
-    {"if": ["headache"], "then": "Migraine"},
-    {"if": ["vomiting", "fever"], "then": "Food Poisoning"},
-    {"if": ["sore throat"], "then": "Throat Infection"},
-    {"if": ["fever", "rash"], "then": "Viral Infection"},
-    {"if": ["fatigue", "body pain"], "then": "Dengue (Possible)"},
-]
 
-print("=== Rule-Based Expert System ===\n")
-print("Example Symptoms: fever, cough, headache, vomiting, rash, fatigue\n")
-
-user_input = input("Enter your symptoms (comma separated): ").lower()
-symptoms = [s.strip() for s in user_input.split(",")]
-
-print("\nProcessing your symptoms...\n")
-
-matched = False
-
-for rule in rules:
-    if all(condition in symptoms for condition in rule["if"]):
-        print("✔ Matched Rule:", rule["if"])
-        print("👉 Diagnosis:", rule["then"])
-        matched = True
-        break
-
-if not matched:
-    print("❗ No matching diagnosis found for the given symptoms.")
-
-print("\nThank you for using the Expert System!")

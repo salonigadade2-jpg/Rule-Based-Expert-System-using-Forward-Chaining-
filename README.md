@@ -63,6 +63,8 @@ Text-based interface
 5. Final diagnosis is displayed
 
 
+
+**EXAMPLE :-**
 === Rule-Based Expert System ===
 Enter your symptoms (comma separated): fever, cough
 

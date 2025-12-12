@@ -1,72 +1,122 @@
 # Rule-Based-Expert-System-using-Forward-Chaining-
-Internship – Project 2.
-Special thanks to @syntecxhub for providing this project opportunity.
+
+**Project Description**
+
+This project implements a Rule-Based Expert System using Python. It mimics how early AI systems performed reasoning: using if–then rules, a facts base, and an inference engine.
+The system accepts user symptoms as input and uses Forward Chaining to infer a diagnosis based on predefined rules.
+
+This project is part of my Artificial Intelligence Virtual Internship at @syntecxhub.
+
+**🎯 Objectives**
+
+Build a small rule engine with if–then rules
+
+Maintain a facts base (user-provided symptoms)
+
+Apply Forward Chaining to infer conclusions
+
+Support multi-step reasoning (chaining of rules)
+
+Display inference steps for transparency
+
+Handle unmatched cases gracefully
+
+🧠 What is a Rule-Based Expert System?
+
+A Rule-Based Expert System is an AI model that uses predefined rules to make decisions.
+Example:
+
+IF fever AND cough THEN Flu
 
 
----
+These systems were widely used in:
 
-⭐ Project Overview
+Medical diagnosis
 
-This rule-based expert system:
+Recommendation systems
 
-Builds a small rule engine (if–then rules)
+Decision support tools
 
-Accepts user facts (symptoms)
+Industrial expert systems
 
-Infers conclusions using forward chaining
+**🔄 How Forward Chaining Works**
 
-Supports multi-step inference
+Forward chaining starts from known facts (user symptoms) and moves forward to match rules and draw conclusions.
 
-Logs reasoning steps so users can understand the reasoning path
+Process:
 
+User enters symptoms (facts).
 
+The system checks rules whose conditions match the facts.
 
----
+If all conditions match → the rule is triggered.
 
-🔧 Features
+The conclusion becomes the predicted diagnosis.
 
-✔ Forward chaining inference
-✔ Multiple rules and conditions
-✔ Dynamic user input
-✔ Clear reasoning trace
+The system may chain additional rules if required.
+
+Final output is displayed to the user.
+
+**⚙️ Features**
+
+✔ Accepts user symptoms
+✔ Matches conditions with rules
+✔ Infers conclusions using forward chaining
+✔ Step-by-step reasoning trace
+✔ Customizable rule base
 ✔ Beginner-friendly AI project
 
+📂 Folder Structure
+Rule-Based-Expert-System/
+│── expert_system.py
+│── README.md
+│── examples/
+│   └── sample_output.txt (optional)
+└── screenshots/
+    └── interface.png (optional)
 
----
+**🧑‍💻 Code Implementation**
 
-📌 Technologies Used
+# -------------------------------------------
+# Rule-Based Expert System (Forward Chaining)
+# -------------------------------------------
 
-Python 3
+rules = [
+    {"if": ["fever", "cough"], "then": "Flu"},
+    {"if": ["headache"], "then": "Migraine"},
+    {"if": ["vomiting", "fever"], "then": "Food Poisoning"},
+    {"if": ["sore throat"], "then": "Throat Infection"},
+    {"if": ["fever", "rash"], "then": "Viral Infection"},
+    {"if": ["fatigue", "body pain"], "then": "Dengue (Possible)"},
+]
 
-Rule-based AI concepts
+print("=== Rule-Based Expert System ===\n")
+print("Example Symptoms: fever, cough, headache, vomiting, rash, fatigue\n")
 
-Text-based interface
+user_input = input("Enter your symptoms (comma separated): ").lower()
+symptoms = [s.strip() for s in user_input.split(",")]
 
+print("\nProcessing your symptoms...\n")
 
+matched = False
 
----
+for rule in rules:
+    if all(condition in symptoms for condition in rule["if"]):
+        print("✔ Matched Rule:", rule["if"])
+        print("👉 Diagnosis:", rule["then"])
+        matched = True
+        break
 
-🧩 How Forward Chaining Works
+if not matched:
+    print("❗ No matching diagnosis found for the given symptoms.")
 
-1. User enters symptoms (facts).
-
-
-2. The engine checks which rules match the facts.
-
-
-3. When a rule matches, the THEN conclusion is inferred.
-
-
-4. New conclusions may trigger more rules.
-
-
-5. Final diagnosis is displayed
+print("\nThank you for using the Expert System!")
 
 
 
-**EXAMPLE :-**
+**🧪 Sample Output**
+
 === Rule-Based Expert System ===
-
 Enter your symptoms (comma separated): fever, cough
 
 Processing your symptoms...
@@ -74,6 +124,5 @@ Processing your symptoms...
 ✔ Matched Rule: ['fever', 'cough']
 👉 Diagnosis: Flu
 
-
-
+Thank you for using the Expert System!
 
